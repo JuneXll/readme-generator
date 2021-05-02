@@ -1,7 +1,7 @@
 # README-Generator
 
 ## Description
-With this README Genterator, a user will be able to create a README file. This will allow a user to create clean and clear README files for their projects.
+With this README Generator, a user will be able to create a README file. This will allow a user to create clean and clear README files for their projects.
 
 ## Table of Contents
 - [Installation](#installation)
