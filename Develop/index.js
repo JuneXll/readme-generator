@@ -52,7 +52,7 @@ inquirer.prompt([
     //Result object storing the user input
     const {fullName,projectTitle,description,installation, usage, contributing, tests, license, gitUsername, email}=result;
     //Rendering the license
-    renderLicense();
+    renderLicense(result.license);
     //Constructing template for README
     const readme = 
 `# ${projectTitle}
@@ -66,6 +66,7 @@ ${description}
 - [License](#license)
 - [Contributing](#contributing)
 - [Test](#tests)
+- [Questions](#questions)
 
 ## Installation 
 ${installation}
@@ -85,7 +86,7 @@ ${contributing}
 ${tests}
 
 ## Questions 
-For any further questions, email me at:${email}. GitHub:(https://github.com/${gitUsername}) `
+For any further questions, email me at (mailto:${email}). GitHub:(https://github.com/${gitUsername}) `
 
     //Creating README file with user input. Will console log error or successful
     fs.writeFile("README.md",readme, function(error){
@@ -98,8 +99,9 @@ For any further questions, email me at:${email}. GitHub:(https://github.com/${gi
     })
 });
 
-//Function to render license and badge
-function renderLicense(result.license){
+// //Function to render license and badge
+// //This is were is breaks
+function renderLicense(license){
     const apache="(https://opensource.org/licenses/Apache-2.0)"
     const apacheBadge="[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
 
@@ -109,35 +111,21 @@ function renderLicense(result.license){
     const gnu="(https://www.gnu.org/licenses/gpl-3.0)"
     const gnuBadge="[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)"
 
-    if(result.license==="Apache"){
-        result.license=apache;
+    if(license==="Apache"){
+        license=apache;
         badge=apacheBadge;
-    } else if (result.license==="MIT"){
-        result.license=mit;
+    } else if (license==="MIT"){
+        license=mit;
         badge=mitBadge;
 
-    } else if (result.license==="GNU"){
-        result.license=gnu;
+    } else if (license==="GNU"){
+        license=gnu;
         badge=gnuBadge;
     }
-    console.log(result.license);
+    console.log(license);
 };
 
 
+module.exports=("./index")
 
-
-
-
-
-
-
-
-
-
-
-// // TODO: Create a function to initialize app
-// function init() {}
-
-// // Function call to initialize app
-// init();
 
